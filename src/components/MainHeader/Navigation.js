@@ -1,14 +1,14 @@
 import React, { useContext } from "react";
 
 import classes from "./Navigation.module.css";
-import AuthContext from "../context/auth-context";
+import { AuthContext } from "../context/auth-context";
 
-const Navigation = (props) => {
-  const ctx = useContext(AuthContext);
+const Navigation = () => {
+  const { isLoggedIn, onLogout } = useContext(AuthContext);
   return (
     <nav className={classes.nav}>
       <ul>
-        {ctx.isLoggedIn && (
+        {isLoggedIn && (
           <>
             <li>
               <a href="/">Users</a>
@@ -17,7 +17,7 @@ const Navigation = (props) => {
               <a href="/">Admin</a>
             </li>
             <li>
-              <button onClick={ctx.onLogout}>Logout</button>
+              <button onClick={onLogout}>Logout</button>
             </li>
           </>
         )}
